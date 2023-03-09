@@ -11,7 +11,7 @@ module.exports = {
                 email
             }
         });
-        if (!user.isNewRecord || user !== null) {
+        if (user !== null && user.isNewRecord) {
             throw new createHttpError(409, 'Email already registered');
         }
         const createUserInDb = await User.create({
