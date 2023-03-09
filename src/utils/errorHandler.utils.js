@@ -4,7 +4,10 @@ module.exports = {
     errorHandler: (error, res) => {
         if (isHttpError(error)) {
             res.status(error.status).json({
-                message: error.message
+                data: {
+                    statusCode: error.status,
+                    message: error.message
+                }
             });
         } else {
             res.status(500).json({

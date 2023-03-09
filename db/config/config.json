@@ -2,7 +2,7 @@
     "development": {
         "username": "postgres",
         "password": "postgres328722",
-        "database": "auth_db",
+        "database": "ecomm_dashboard_db",
         "host": "localhost",
         "dialect": "postgres",
         "define": {

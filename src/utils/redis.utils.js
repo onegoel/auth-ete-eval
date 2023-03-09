@@ -1,5 +1,5 @@
 const createHttpError = require('http-errors');
-const { client } = require('../../db/config/redis.config');
+const { client } = require('../../redis.config');
 
 module.exports = {
     storeTokenInRedis: async (token) => {

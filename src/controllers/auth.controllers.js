@@ -34,12 +34,14 @@ module.exports = {
             //     navigate(HOME_ROUTE);
             // });
         } catch (error) {
+            console.log(error);
             errorHandler(error, res);
         }
     },
 
     loginUser: async (req, res) => {
         try {
+            console.log(req.body);
             const { email, password } = req.body;
             await checkUserInDb({ email, password });
             const token = await generateAccessJwt({ email });

@@ -6,12 +6,12 @@ module.exports = {
     registerUserInDb: async (newUser) => {
         console.log('newUser', newUser);
         const { email } = newUser;
-        const { isNewRecord } = await User.findOne({
+        const user = await User.findOne({
             where: {
                 email
             }
         });
-        if (!isNewRecord) {
+        if (!user.isNewRecord || user !== null) {
             throw new createHttpError(409, 'Email already registered');
         }
         const createUserInDb = await User.create({
