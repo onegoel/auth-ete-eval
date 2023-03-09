@@ -9,7 +9,7 @@ router.get('/home', (req, res) => {
 });
 
 router.post('/register', inputValidator(authSchema, 'body'), registerUser);
-router.post('/login', inputValidator(authSchema, 'body'),loginUser);
+router.post('/login', inputValidator(authSchema, 'body'), loginUser);
 router.get('/validate', inputValidator(tokenSchema, 'headers'), validateUser);
 
 

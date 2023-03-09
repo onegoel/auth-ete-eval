@@ -45,14 +45,16 @@ module.exports = {
             const { email, password } = req.body;
             await checkUserInDb({ email, password });
             const token = await generateAccessJwt({ email });
-            storeTokenInRedis(token).then(() => {
-                res.status(200).json({
-                    data: {
-                        message: `${email} logged in successfully!`,
-                        token: token
-                    }
-                });
+            console.log(token);
+            await storeTokenInRedis(token); 
+            const resp = await verifyTokenInRedis(token);
+            res.status(200).json({
+                data: {
+                    message: `${email} logged in successfully!`,
+                    token: token
+                }
             });
+    
         }
         catch (error) {
             errorHandler(error, res);

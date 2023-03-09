@@ -3,7 +3,7 @@ const { client } = require('../../redis.config');
 
 module.exports = {
     storeTokenInRedis: async (token) => {
-        await client.SET(token, 'true', 'EX', 3600);
+        await client.set(token, 'true', 'EX', 3600);
     },
 
     verifyTokenInRedis: async (token) => {

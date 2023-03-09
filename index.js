@@ -7,6 +7,10 @@ const db = require('./src/models');
 const cors = require('cors');
 const { client } = require('./db/config/redis.config');
 
+const connectRedis = async () => {
+    await client.connect();
+}
+connectRedis()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
@@ -16,7 +20,6 @@ app.use(cors({
 }));
 app.use('/auth', router);
 
-client.connect();
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(port, () => {
