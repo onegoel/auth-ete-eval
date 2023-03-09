@@ -1,0 +1,12 @@
+{
+    "development": {
+        "username": "postgres",
+        "password": "postgres328722",
+        "database": "auth_db",
+        "host": "localhost",
+        "dialect": "postgres",
+        "define": {
+            "timestamps": false
+        }
+    }
+}
