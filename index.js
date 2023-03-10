@@ -5,7 +5,7 @@ const port = process.env.SERVER_PORT;
 const router = require('./src/routes/auth.routes');
 const db = require('./src/models');
 const cors = require('cors');
-const { client } = require('./db/config/redis.config');
+// const { client } = require('./db/config/redis.config');
 
 
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(cors({
 }));
 app.use('/auth', router);
 
-client.connect();
+// client.connect();
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(port, () => {

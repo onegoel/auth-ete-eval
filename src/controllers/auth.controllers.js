@@ -2,7 +2,7 @@ const { encryptPassword } = require('../utils/password.utils');
 const { registerUserInDb, checkUserInDb } = require('../services/auth.services');
 const { errorHandler } = require('../utils/errorHandler.utils');
 const { generateAccessJwt, verifyAccessJwt } = require('../utils/jwt.utils');
-const { storeTokenInRedis, verifyTokenInRedis } = require('../utils/redis.utils');
+// const { storeTokenInRedis, verifyTokenInRedis } = require('../utils/redis.utils');
 
 module.exports = {
     registerUser: async (req, res) => {
