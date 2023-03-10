@@ -21,7 +21,7 @@ module.exports = {
             jwt.verify(token, JWT_SECRET, (error, decoded) => {
                 if (error) {
                     console.error(error.message);
-                    return reject(createHttpError(500, 'Error verifying access token'));
+                    return reject(createHttpError(401, error.message));
                 }
                 resolve(decoded);
             });
