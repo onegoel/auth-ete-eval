@@ -45,14 +45,14 @@ module.exports = {
             const { email, password } = req.body;
             await checkUserInDb({ email, password });
             const token = await generateAccessJwt({ email });
-            storeTokenInRedis(token).then(() => {
-                res.status(200).json({
-                    data: {
-                        message: `${email} logged in successfully!`,
-                        token: token
-                    }
-                });
+            //storeTokenInRedis(token).then(() => {
+            res.status(200).json({
+                data: {
+                    message: `${email} logged in successfully!`,
+                    token: token
+                }
             });
+            //});
         }
         catch (error) {
             errorHandler(error, res);
@@ -63,14 +63,14 @@ module.exports = {
         try {
             const token = req.headers.authorization.split(' ')[1];
             const payload = await verifyAccessJwt(token);
-            verifyTokenInRedis(token).then(() => {
-                res.status(200).json({
-                    data: {
-                        message: 'Token is valid, welcome to the app!',
-                        payload: payload
-                    }
-                });
+            //verifyTokenInRedis(token).then(() => {
+            res.status(200).json({
+                data: {
+                    message: 'Token is valid, welcome to the app!',
+                    payload: payload
+                }
             });
+            //});
         }
         catch (error) {
             errorHandler(error, res);

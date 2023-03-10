@@ -7,6 +7,7 @@ const db = require('./src/models');
 const cors = require('cors');
 const { client } = require('./db/config/redis.config');
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
